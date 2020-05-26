@@ -1,6 +1,7 @@
 #include "mainwindow.h"
-
+#include <QLocalSocket>
 #include <QApplication>
+using namespace std;
 
 int main(int argc, char *argv[])
 {

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>773</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="input_widget" native="true">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -23,7 +23,7 @@
       <height>171</height>
      </rect>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="function">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -36,7 +36,7 @@
       <string>Function:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="x0">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -49,7 +49,7 @@
       <string>X0:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="xn">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -62,7 +62,7 @@
       <string>Xn:</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_2">
+    <widget class="QPlainTextEdit" name="xn_input">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -75,7 +75,7 @@
       <string>20</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="function_input">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -110,7 +110,7 @@
       </property>
      </item>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_3">
+    <widget class="QPlainTextEdit" name="x0_input">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -123,7 +123,7 @@
       <string>0</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="points">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -136,7 +136,7 @@
       <string>Points:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="order">
      <property name="geometry">
       <rect>
        <x>230</x>
@@ -149,7 +149,7 @@
       <string>Order:</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_4">
+    <widget class="QPlainTextEdit" name="points_input">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -162,7 +162,7 @@
       <string>200</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit_5">
+    <widget class="QPlainTextEdit" name="order_input">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -176,29 +176,29 @@
      </property>
     </widget>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="msg">
     <property name="geometry">
      <rect>
-      <x>155</x>
+      <x>180</x>
       <y>180</y>
-      <width>461</width>
+      <width>411</width>
       <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="widget_2" native="true">
+   <widget class="QWidget" name="controller_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>180</x>
       <y>450</y>
-      <width>461</width>
-      <height>80</height>
+      <width>411</width>
+      <height>81</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="connect_button">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>20</x>
        <y>30</y>
        <width>75</width>
        <height>23</height>
@@ -208,10 +208,10 @@
       <string>Connect</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="compute_button">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>120</x>
        <y>30</y>
        <width>75</width>
        <height>23</height>
@@ -221,10 +221,10 @@
       <string>Compute</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="break_button">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>220</x>
        <y>30</y>
        <width>75</width>
        <height>23</height>
@@ -234,10 +234,10 @@
       <string>Break</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="exit_button">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>320</x>
        <y>30</y>
        <width>75</width>
        <height>23</height>
@@ -248,13 +248,13 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QGraphicsView" name="graph_view">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>260</y>
-      <width>391</width>
-      <height>181</height>
+      <x>180</x>
+      <y>250</y>
+      <width>411</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
@@ -264,7 +264,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>773</width>
      <height>21</height>
     </rect>
    </property>
