@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>0</y>
+      <y>10</y>
       <width>391</width>
       <height>171</height>
      </rect>
@@ -176,21 +176,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QTextBrowser" name="msg">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>180</y>
-      <width>411</width>
-      <height>61</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QWidget" name="controller_widget" native="true">
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>450</y>
+      <y>470</y>
       <width>411</width>
       <height>81</height>
      </rect>
@@ -248,15 +238,35 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGraphicsView" name="graph_view">
+   <widget class="QWidget" name="display_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>250</y>
-      <width>411</width>
-      <height>201</height>
+      <x>160</x>
+      <y>180</y>
+      <width>451</width>
+      <height>291</height>
      </rect>
     </property>
+    <widget class="QTextBrowser" name="msg">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>411</width>
+       <height>61</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graph_view">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>411</width>
+       <height>201</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

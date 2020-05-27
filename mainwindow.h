@@ -17,6 +17,8 @@ public:
 
 private slots:
     void on_connect_button_clicked();
+    void setMsg(const QString &iconText);
+    void sendMsg();
 
 private:
     Ui::MainWindow *ui;
