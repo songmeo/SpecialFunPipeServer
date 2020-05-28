@@ -35,36 +35,19 @@ void MainWindow::sendMsg() {
     QByteArray msg;
     QDataStream s(&msg, QIODevice::WriteOnly);
 
-    //function
+    QByteArray size;
+    QDataStream size_str(&size, QIODevice::WriteOnly);
+    size_str.setByteOrder(QDataStream::LittleEndian);
+
     QString f = ui->function_input->currentText();
-    s << f.toUtf8().QByteArray::toHex();
-    //msg.append(f.toUtf8().QByteArray::toHex());
-
-    //x0
     double x0 = ui->x0_input->toPlainText().toDouble();
-    s << x0;
-    //msg.append(x0);
-
-    //xn
     double xn = ui->xn_input->toPlainText().toDouble();
-    s << xn;
-    //msg.append(xn);
-
-    //points
     int points = ui->points_input->toPlainText().toInt();
-    s << points;
-    //msg.append(points);
-
-    //order
     int order = ui->order_input->toPlainText().toInt();
-    s << order;
-    //msg.append(order);
 
-    //size
-    //QString size = QString::number(msg.size());
-    int size = msg.size();
-    msg.prepend(4, 0);
-    msg.insert(size, 0);
+    s << f << x0 << xn << points << order;
+    size_str << msg.size();
+    msg.replace(0,4,size);
 
     socket.write(msg);
 }
