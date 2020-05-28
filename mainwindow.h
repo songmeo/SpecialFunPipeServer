@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void hexprint(const QByteArray& arr);
 
 private slots:
     void on_connect_button_clicked();
