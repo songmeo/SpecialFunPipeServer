@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <iostream>
+
 //void MainWindow::hexprint(const QByteArray& arr) {
 //    unsigned char chars[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 //    QString s;
@@ -68,20 +70,33 @@ void MainWindow::sendMsg() {
 
 void MainWindow::readMsg() {
     QByteArray bA = socket.readAll();
+    bA.remove(0,4);
     QDataStream data(&bA, QIODevice::ReadWrite);
-    bA.remove(0,3);
-
+    data.setByteOrder(QDataStream::LittleEndian);
     QString c("Curve");
     QByteArray curve((const char *)c.utf16(), (c.size()+1) * 2);
     if(!bA.contains(curve)) {
-        QString error_msg;
-        data >> error_msg;
+        QString error_msg = QString::fromUtf16(reinterpret_cast<const ushort*>(bA.data()), bA.size());
         setMsg(error_msg);
     }
     else {
-        QString func;
-        double x0, xn;
-        int points, order;
+        QVector<double> x, y;
+        QVector<double> points;
+        data.skipRawData(12);
+        //data >> points;
+        while(!data.atEnd()) {
+            double x_v, y_v;
+            data >> x_v >> y_v;
+            x.push_back(x_v);
+            y.push_back(y_v);
+        }
+//        for(int i = 0; i < points.size(); i++) {
+//            x.push_back(points[i++]);
+//            y.push_back(points[i]);
+//        }
+        for(int i = 0; i < x.size(); i++) {
+            std::cout << "[x=(" << x.at(i) << ") y=(" << y.at(i) << ")]\n";
+        }
 
     }
     //QString msg = QString::fromUtf8(bA.constData());
@@ -90,8 +105,6 @@ void MainWindow::readMsg() {
     //double x0, xn;
     //QString f;
     //data >> size >> x
-
-
 }
 
 void MainWindow::on_compute_button_clicked()
