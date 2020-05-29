@@ -14,12 +14,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void hexprint(const QByteArray& arr);
+    //void hexprint(const QByteArray& arr);
 
 private slots:
     void on_connect_button_clicked();
     void setMsg(const QString &iconText);
     void sendMsg();
+    void readMsg();
+    void on_compute_button_clicked();
+
+    void on_break_button_clicked();
 
 private:
     Ui::MainWindow *ui;
