@@ -22,8 +22,10 @@ private slots:
     void sendMsg();
     void readMsg();
     void on_compute_button_clicked();
-
+    void makePlot(QVector<double> x, QVector<double> y);
     void on_break_button_clicked();
+
+    void on_exit_button_clicked();
 
 private:
     Ui::MainWindow *ui;

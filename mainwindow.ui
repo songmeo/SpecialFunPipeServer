@@ -257,7 +257,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="graph_view">
+    <widget class="qCustomPlot" name="graph_view">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -281,6 +281,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qCustomPlot</class>
+   <extends>QGraphicsView</extends>
+   <header location="global">qcustomplot.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

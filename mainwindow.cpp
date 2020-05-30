@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "qcustomplot.h"
 #include <iostream>
 
 //void MainWindow::hexprint(const QByteArray& arr) {
@@ -83,28 +83,25 @@ void MainWindow::readMsg() {
         QVector<double> x, y;
         QVector<double> points;
         data.skipRawData(12);
-        //data >> points;
         while(!data.atEnd()) {
             double x_v, y_v;
             data >> x_v >> y_v;
             x.push_back(x_v);
             y.push_back(y_v);
         }
-//        for(int i = 0; i < points.size(); i++) {
-//            x.push_back(points[i++]);
-//            y.push_back(points[i]);
+//        for(int i = 0; i < x.size(); i++) {
+//            std::cout << "[x=(" << x.at(i) << ") y=(" << y.at(i) << ")]\n";
 //        }
-        for(int i = 0; i < x.size(); i++) {
-            std::cout << "[x=(" << x.at(i) << ") y=(" << y.at(i) << ")]\n";
-        }
-
+        makePlot(x,y);
     }
-    //QString msg = QString::fromUtf8(bA.constData());
-    //QDataStream data(&bA, QIODevice::ReadWrite);
-    //int size, points, order;
-    //double x0, xn;
-    //QString f;
-    //data >> size >> x
+}
+
+void MainWindow::makePlot(QVector<double> x, QVector<double> y)
+{
+    ui->graph_view->addGraph();
+    ui->graph_view->graph(0)->setData(x,y);
+    ui->graph_view->rescaleAxes();
+    ui->graph_view->replot();
 }
 
 void MainWindow::on_compute_button_clicked()
@@ -124,4 +121,9 @@ void MainWindow::on_break_button_clicked()
     if(socket.state() == QLocalSocket::UnconnectedState || socket.waitForDisconnected(5000)) {
         setMsg("Disconnected");
     }
+}
+
+void MainWindow::on_exit_button_clicked()
+{
+    QCoreApplication::exit();
 }
