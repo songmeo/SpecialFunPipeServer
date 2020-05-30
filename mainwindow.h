@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLocalSocket>
+#include <QLineEdit>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,7 +25,6 @@ private slots:
     void on_compute_button_clicked();
     void makePlot(QVector<double> x, QVector<double> y);
     void on_break_button_clicked();
-
     void on_exit_button_clicked();
 
 private:

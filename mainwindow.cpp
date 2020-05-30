@@ -56,10 +56,17 @@ void MainWindow::sendMsg() {
     // msg format:   uint32 size || utf16 f_name || double x0 || double xn || uint32 nPoints ( || order ( bessel only) )
     QString f = ui->function_input->currentText();
     f.append(QChar(0)); //null terminator
-    double x0 = ui->x0_input->toPlainText().toDouble();
-    double xn = ui->xn_input->toPlainText().toDouble();
-    int points = ui->points_input->toPlainText().toInt();
-    int order = ui->order_input->toPlainText().toInt();
+
+    QValidator* i = new QIntValidator();
+    QValidator* d = new QDoubleValidator();
+    ui->x0_input->setValidator(d);
+    ui->xn_input->setValidator(d);
+    ui->points_input->setValidator(i);
+    ui->order_input->setValidator(i);
+    double x0 = ui->x0_input->text().toDouble();
+    double xn = ui->xn_input->text().toDouble();
+    int points = ui->points_input->text().toInt();
+    int order = ui->order_input->text().toInt();
 
     msg_str << f << x0 << xn << points << order;
     size_str << msg.size();
@@ -81,8 +88,7 @@ void MainWindow::readMsg() {
     }
     else {
         QVector<double> x, y;
-        QVector<double> points;
-        data.skipRawData(12);
+        data.skipRawData(12); //skip curve
         while(!data.atEnd()) {
             double x_v, y_v;
             data >> x_v >> y_v;
@@ -106,6 +112,7 @@ void MainWindow::makePlot(QVector<double> x, QVector<double> y)
 
 void MainWindow::on_compute_button_clicked()
 {
+    ui->msg->clear();
     sendMsg();
     if(socket.state() == QLocalSocket::ConnectedState || socket.waitForReadyRead(5000)) {
         readMsg();
